@@ -1,0 +1,93 @@
+// Basado en https://material.angular.io/cdk/layout/overview#predefined-breakpoints
+
+@mixin breakpoint($breakpoint) {
+  @if ($breakpoint ==XSmall) {
+    @media only screen and (max-width: 599.98px) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Small) {
+    @media only screen and (min-width: 600px) and (max-width: 959.98px) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Medium) {
+    @media only screen and (min-width: 960px) and (max-width: 1279.98px) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Large) {
+    @media only screen and (min-width: 1280px) and (max-width: 1919.98px) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==XLarge) {
+    @media only screen and (min-width: 1920px) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Handset) {
+
+    @media only screen and (max-width: 599.98px) and (orientation: portrait),
+    (max-width: 959.98px) and (orientation: landscape) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Tablet) {
+
+    @media only screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait),
+    (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==Web) {
+
+    @media only screen and (min-width: 840px) and (orientation: portrait),
+    (min-width: 1280px) and (orientation: landscape) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==HandsetPortrait) {
+    @media only screen and (max-width: 599.98px) and (orientation: portrait) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==TabletPortrait) {
+    @media only screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==WebPortrait) {
+    @media only screen and (min-width: 840px) and (orientation: portrait) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==HandsetLandscape) {
+    @media only screen and (max-width: 959.98px) and (orientation: landscape) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==TabletLandscape) {
+    @media only screen and (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) {
+      @content
+    }
+  }
+
+  @if ($breakpoint ==WebLandscape) {
+    @media only screen and (min-width: 1280px) and (orientation: landscape) {
+      @content
+    }
+  }
+}

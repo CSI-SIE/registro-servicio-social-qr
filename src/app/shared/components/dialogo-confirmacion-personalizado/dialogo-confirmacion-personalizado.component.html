@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{ datos.titulo ? datos.titulo : 'Atención' }}</h1>
+<div mat-dialog-content>
+  <span
+    *ngIf="HTMLdeConfianza"
+    [innerHTML]="datos.mensaje | HTMLSeguro: 'html'"></span>
+  <span *ngIf="!HTMLdeConfianza" [innerHTML]="datos.mensaje"></span>
+</div>
+<div mat-dialog-actions align="end">
+  <button
+    mat-raised-button
+    type="button"
+    [color]="'primary'"
+    (click)="cierraDialogo(1)">
+    <mat-icon fontIcon="done"></mat-icon>Sí
+  </button>
+  <button mat-raised-button type="button" (click)="cierraDialogo(0)">
+    <mat-icon fontIcon="close"></mat-icon>No
+  </button>
+</div>

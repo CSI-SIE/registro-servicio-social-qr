@@ -1,0 +1,85 @@
+<mat-card id="detalles">
+    @if (muestraIndicadorCarga() && this.validezInicioSesion()?.Valido === 1) {
+    <div class="indicador-carga">
+        <mat-progress-spinner class="spinner" color="accent" mode="indeterminate"></mat-progress-spinner>
+    </div>
+    }
+    @if (!muestraIndicadorCarga() && this.validezInicioSesion()?.Valido === 1) {
+    <div id="resultados">
+        <mat-card-header>
+            <div class="alert alert-warning mat-elevation-z2 p-1 mb-0" id="infoAlumno">
+                <mat-list style="word-break: break-word;">
+                    <mat-list-item>
+                        <span matListItemTitle>Organización</span>
+                        <span matListItemLine>{{ this.validezInicioSesion()?.organizacion }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Proyecto</span>
+                        <span matListItemLine>{{ this.validezInicioSesion()?.nombre_corto }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Plazas</span>
+                        <span matListItemLine>{{tabla.data[0].inscritos}} / {{ this.validezInicioSesion()?.plazas }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </mat-card-header>
+
+        <button matButton="filled" (click)="abreDialogoEscaneoQR()" style="justify-content: center;"><mat-icon
+                fontIcon="person_add"></mat-icon>REGISTRAR ALUMNO</button>
+
+        @if (!muestraIndicadorCarga() && tabla.data.length) {
+        <section id="listado-elementos-tabla" class="mat-elevation-z8">
+            <section id="tabla">
+                <table mat-table id="contenido-tabla" class="mat-table-striped" [dataSource]="tabla"
+                    [trackBy]="fnSeguimiento" matSort>
+                    <!-- Columna fecha de la reunión -->
+                    <ng-container matColumnDef="idPerson">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                        <td mat-cell *matCellDef="let element">{{ element.idPerson }}</td>
+                    </ng-container>
+
+                    <!-- Columna tipo de modalidad -->
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+                    </ng-container>
+
+                    <!-- Columna tipo de modalidad -->
+                    <ng-container matColumnDef="carrera">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Carrera</th>
+                        <td mat-cell *matCellDef="let element">{{ element.carrera }}</td>
+                    </ng-container>
+
+                    <!-- Columna tipo de modalidad -->
+                    <ng-container matColumnDef="correo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+                    </ng-container>
+
+                    <!-- Columna tipo de modalidad -->
+                    <ng-container matColumnDef="telefono">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+                        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="obtenColumnasDisponibles()"></tr>
+                    <tr mat-row *matRowDef="let row; columns: obtenColumnasDisponibles()">
+                    </tr>
+                </table>
+            </section>
+            <mat-paginator [length]="tabla.data.length" [pageSizeOptions]="[3, 5, 10, 25, 50]"
+                [showFirstLastButtons]="true" (page)="procesaCambioLongitudPagina($event)">
+            </mat-paginator>
+        </section>
+    }
+    </div>
+    }
+
+    @if (!muestraIndicadorCarga() && tabla.data.length === 0) {
+    <div class="alert alert-warning px-4 py-3 my-auto">
+        <mat-icon class="mr-1" [inline]="true" fontIcon="search_off"></mat-icon>
+        No existen registros de alumnos para este servicio social.
+    </div>
+    }
+</mat-card>

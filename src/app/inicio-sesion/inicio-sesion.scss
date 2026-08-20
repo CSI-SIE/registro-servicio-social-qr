@@ -1,0 +1,36 @@
+@use '../shared/scss/mixins/breakpoints' as bp;
+
+#panel-selector-filtros {
+  display: flex;
+  flex-direction: column;
+  
+
+  #contenido-selector-filtros {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+
+    #idTronco{
+      flex: 0 1 calc(30% - 0.5rem);
+
+      @include bp.breakpoint(Medium) {
+        flex: 0 1 calc(33% - 0.5rem);
+      }
+
+      @include bp.breakpoint(Small) {
+        flex: 0 1 calc(50% - 0.5rem);
+      }
+
+      @include bp.breakpoint(XSmall) {
+        flex: 0 1 calc(100% - 0.5rem);
+      }
+    }
+  }
+
+  #acciones-selector-filtros {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

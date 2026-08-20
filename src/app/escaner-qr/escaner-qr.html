@@ -1,0 +1,102 @@
+<h1 mat-dialog-title>Registro del alumno</h1>
+
+<div mat-dialog-content>
+    <div class="scanner-container">
+
+        <div id="qr-reader"></div>
+
+        @if (scanning()) {
+        <p class="status">
+            Por favor, apunta la cámara hacia un código QR
+        </p>
+        }
+
+        @if (qrResult(); as result) {
+        <div class="result">
+
+            @if (muestraIndicadorCarga()) {
+            <div class="indicador-carga">
+                <mat-progress-spinner class="spinner" color="accent" mode="indeterminate"></mat-progress-spinner>
+            </div>
+            }
+
+            @if (!muestraIndicadorCarga() && !this.infoCredencial()) {
+            <div class="alert alert-danger" role="alert">
+                <p>Información alumno no encontrado</p>
+            </div>
+            }
+
+            @if (!muestraIndicadorCarga() && this.infoCredencial()) {
+            @if (this.infoCredencial()?.valido === 1) {
+            <form novalidate id="panel-formulario" [formGroup]="formulario">
+
+                <!-- {{ this.formulario.value | json }} -->
+
+                <section id="datos-generales">
+                    <div class="alert alert-warning mat-elevation-z2 p-3 mb-0" id="infoAlumno">
+                        <div class="imagen-alumno">
+                            <img [src]="this.infoCredencial()?.foto" alt="Foto del alumno" />
+                        </div>
+                        <div class="datos-alumno">
+
+                            <div class="campo-alumno">
+                                <span class="titulo-campo">Nombre</span>
+                                <span class="valor-campo">
+                                    {{ this.infoCredencial()?.idIest }}
+                                    {{ this.infoCredencial()?.Nombre }}
+                                </span>
+                            </div>
+
+                            <div class="campo-alumno">
+                                <span class="titulo-campo">Carrera</span>
+                                <span class="valor-campo">
+                                    {{ this.infoCredencial()?.carrera }}
+                                </span>
+                            </div>
+
+                            <div class="campo-alumno">
+
+                                <span class="titulo-campo">Contacto</span>
+                                <mat-form-field appearance="outline" class="telefono-field">
+                                    <input matInput formControlName="telefono" />
+
+                                    @if (formulario.controls.telefono.hasError('required')) {
+                                    <mat-error>Requiere el teléfono del alumno.</mat-error>
+                                    }
+
+                                    @if (formulario.controls.telefono.hasError('pattern')) {
+                                    <mat-error>El teléfono debe tener mínimo 10 dígitos.</mat-error>
+                                    }
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            }
+            }
+        </div>
+        }
+
+        @if (errorMessage(); as error) {
+        <div class="error">
+            {{ error }}
+        </div>
+        }
+
+    </div>
+</div>
+
+<mat-dialog-actions [align]="'center'">
+    @if (!scanning() && qrResult() && this.infoCredencial()?.valido === 1) {
+    <button matButton="filled" type="button" (click)="registraAlumno()"><mat-icon
+            fontIcon="person_add"></mat-icon>Registrar</button>
+    }
+
+    @if (!scanning() && qrResult()) {
+    <button matButton="filled" type="button" (click)="startScanner()">
+        <mat-icon fontIcon="autorenew"></mat-icon>Escanear nuevamente
+    </button>
+    }
+    <button mat-raised-button (click)="cierraDialogo(0)"><mat-icon fontIcon="close"></mat-icon>CERRAR</button>
+</mat-dialog-actions>

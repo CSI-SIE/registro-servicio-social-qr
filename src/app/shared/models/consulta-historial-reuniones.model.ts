@@ -1,0 +1,33 @@
+export interface ConsultaHistorialReuniones {
+  idTutoria: number;
+  fechatutoria: string;
+  tema: string;
+  idTema: number;
+  comentario: string;
+  proximaCita: string;
+  editarReunion: number;
+  fechaAgendada: string;
+  tutor: string;
+  modalidad: string;
+  idmodalidad: number;
+  motivo: string;
+  idMotivo: number;
+  color: string;
+  asistio: number;
+  asistioTexto: string;
+  horaInicio: string;
+  horaFin: string;
+  tiempo: number;
+  compromisos: string;
+  canalizacion: string;
+  idCanalizacion: number;
+  motivoCanalizacion: string;
+  origenCanaliza: string;
+  destinoCanaliza: string;
+  idmotivoCanalizacion: number;
+  idOrigenCanaliza: number;
+  iDestinoCanaliza: number;
+  comentariosCanalizacion: string;
+  validado: number;
+  comentarioAlumno: string;
+}

@@ -1,0 +1,77 @@
+.scanner-container {
+  width: 100%;
+  max-width: 500px;
+  //margin: 0 auto;
+  //padding: 5px;
+  box-sizing: border-box;
+}
+
+#qr-reader {
+  width: 100%;
+  max-width: 400px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.status {
+  text-align: center;
+}
+
+/* Foto */
+.imagen-alumno {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.imagen-alumno img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Información */
+.datos-alumno {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.campo-alumno {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.titulo-campo {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.valor-campo {
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* Input */
+.telefono-field {
+  width: 100%;
+}
+
+/* Error */
+.error {
+  //margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #ffe5e5;
+}
+
+/* Botones */
+button {
+  display: flex;
+  flex-direction: row;
+}

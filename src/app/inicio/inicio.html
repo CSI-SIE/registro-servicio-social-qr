@@ -1,0 +1,13 @@
+<div id="pantalla-inicial">
+    @if (!inicioSesionCodigo()) {
+    <app-inicio-sesion (inicioSesionCodigo)="procesaInicioSesionCodigo($event)"></app-inicio-sesion>
+    }
+
+    <section id="contenido">
+        @if (inicioSesionCodigo()) {
+        <section id="listado">
+            <app-tabla-alumnos-servicio-social [inicioSesionCodigo]="this.inicioSesionCodigo()"></app-tabla-alumnos-servicio-social>
+        </section>
+        }
+    </section>
+</div>

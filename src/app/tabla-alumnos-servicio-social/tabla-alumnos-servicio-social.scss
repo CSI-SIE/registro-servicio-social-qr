@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+
+#resultados {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    #infoAlumno {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        mat-list {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: stretch;
+            gap: 1rem;
+        }
+
+        mat-list-item {
+            height: auto;
+            min-height: 72px;
+            min-width: 0;
+
+            [matListItemTitle],
+            [matListItemLine] {
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        mat-list-item:nth-child(1),
+        mat-list-item:nth-child(2) {
+            flex: 2;
+        }
+
+        mat-list-item:nth-child(3) {
+            flex: 1;
+        }
+    }
+
+    #listado-elementos-tabla {
+        #tabla {
+            width: 100%;
+            overflow-x: auto;
+
+            #contenido-tabla {
+                width: 100%;
+                min-width: calc(5 * 200px);
+            }
+        }
+    }
+}

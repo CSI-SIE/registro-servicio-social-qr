@@ -1,0 +1,34 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="muestraPanelFiltros">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="pt-2">
+                <p>Ingreso</p>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @if (!muestraIndicadorCarga()) {
+        <form novalidate id="panel-selector-filtros" [formGroup]="formulario" (submit)="estableceFiltros()">
+            <div id="contenido-selector-filtros">
+
+                <mat-form-field id="codigo">
+                    <mat-label>Ingrese el código.</mat-label>
+                    <input formControlName="codigoProveedor" matInput type="text" />
+                    @if (ef.codigoProveedor) {
+                    <mat-error>{{ ef.codigoProveedor }}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div id="acciones-selector-filtros">
+                <button matButton="filled" type="submit" [disabled]="!formulario.valid">
+                    <mat-icon fontIcon="login" class="mr-1"></mat-icon>Ingresar
+                </button>
+            </div>
+        </form>
+        } @else {
+        <div class="indicador-carga">
+            <mat-progress-spinner class="spinner" color="accent" mode="indeterminate"></mat-progress-spinner>
+        </div>
+        }
+    </mat-expansion-panel>
+</mat-accordion>
