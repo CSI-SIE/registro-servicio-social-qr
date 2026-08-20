@@ -13,7 +13,7 @@ Con el apoyo adicional de las siguientes herramientas:
   concordancia con la imagen institucional para Angular Material.
 * [compodoc](https://github.com/compodoc/compodoc) - Generador de documentación para Angular con
   licencia [MIT](https://opensource.org/licenses/MIT).
-* [html5-qrcode] (https://www.npmjs.com/package/html5-qrcode) - Librería para el escaner QR.
+* [html5-qrcode](https://www.npmjs.com/package/html5-qrcode) - Librería para el escaner QR.
   ## Autores
 
 * **Verónica Janeth Díaz Gutiérrez** - *Base de datos y API* -
