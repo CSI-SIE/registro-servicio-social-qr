@@ -8,20 +8,6 @@
     <div id="resultados">
         <mat-card-header>
             <div class="alert alert-warning mat-elevation-z2 p-1 mb-0" id="infoAlumno">
-                <!-- <mat-list>
-                    <mat-list-item>
-                        <span matListItemTitle>Organización:</span>
-                        <span matListItemLine>{{ this.validezInicioSesion()?.organizacion }}</span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>Proyecto:</span>
-                        <span matListItemLine>{{ this.validezInicioSesion()?.nombre_corto }}</span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>Plazas</span>
-                        <span matListItemLine>{{tabla.data[0].inscritos}}/{{ this.validezInicioSesion()?.plazas }}</span>
-                    </mat-list-item>
-                </mat-list> -->
                 <div class="dato-info">
                     <span class="titulo-info">Organización:</span>
                     <span class="valor-info">
@@ -39,7 +25,9 @@
                 <div class="dato-info">
                     <span class="titulo-info">Plazas:</span>
                     <span class="valor-info">
-                        {{tabla.data[0].inscritos}}/{{ this.validezInicioSesion()?.plazas }}
+                        {{ tabla.data[0]?.inscritos ?? 0}}
+                        /
+                        {{ this.validezInicioSesion()?.plazas }}
                     </span>
                 </div>
 

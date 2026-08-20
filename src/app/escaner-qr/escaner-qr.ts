@@ -125,7 +125,7 @@ export class EscanerQr
         idAlumno: formBuilder.control<number | null>(null, [Validators.required]),
         telefono: formBuilder.control<number | null>(null, [
           Validators.required,
-          Validators.pattern(/^\d{10,}$/),
+          Validators.pattern(/^\d{10}$/),
         ]),
       }),
     );

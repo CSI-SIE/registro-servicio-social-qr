@@ -64,7 +64,7 @@
                                     }
 
                                     @if (formulario.controls.telefono.hasError('pattern')) {
-                                    <mat-error>El teléfono debe tener mínimo 10 dígitos.</mat-error>
+                                    <mat-error>El teléfono debe tener 10 dígitos.</mat-error>
                                     }
                                 </mat-form-field>
                             </div>
@@ -86,16 +86,27 @@
     </div>
 </div>
 
-<mat-dialog-actions [align]="'center'">
-    @if (!scanning() && qrResult() && this.infoCredencial()?.valido === 1) {
-    <button matButton="filled" type="button" (click)="registraAlumno()"><mat-icon
-            fontIcon="person_add"></mat-icon>Registrar</button>
-    }
+<mat-dialog-actions class="acciones-dialogo">
 
-    @if (!scanning() && qrResult()) {
-    <button matButton="filled" type="button" (click)="startScanner()">
-        <mat-icon fontIcon="autorenew"></mat-icon>Escanear nuevamente
+    <div class="acciones-superiores">
+        @if (!scanning() && qrResult() && this.infoCredencial()?.valido === 1) {
+        <button matButton="filled" type="button" (click)="registraAlumno()">
+            <mat-icon fontIcon="person_add"></mat-icon>
+            Registrar
+        </button>
+        }
+
+        @if (!scanning() && qrResult()) {
+        <button matButton="filled" type="button" (click)="startScanner()">
+            <mat-icon fontIcon="autorenew"></mat-icon>
+            Escanear nuevamente
+        </button>
+        }
+    </div>
+
+    <button mat-raised-button type="button" (click)="cierraDialogo(0)">
+        <mat-icon fontIcon="close"></mat-icon>
+        CERRAR
     </button>
-    }
-    <button mat-raised-button (click)="cierraDialogo(0)"><mat-icon fontIcon="close"></mat-icon>CERRAR</button>
+
 </mat-dialog-actions>
