@@ -150,7 +150,7 @@ export class EscanerQr
     this.qrResult.set(null);
     this.infoCredencial.set(null);
 
-    this.scannerActivo = false;
+    //this.scannerActivo = false;
 
     this.formulario.controls.telefono.reset();
     this.formulario.controls.idPersonAlumno.reset();

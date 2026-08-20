@@ -8,20 +8,41 @@
     <div id="resultados">
         <mat-card-header>
             <div class="alert alert-warning mat-elevation-z2 p-1 mb-0" id="infoAlumno">
-                <mat-list style="word-break: break-word;">
+                <!-- <mat-list>
                     <mat-list-item>
-                        <span matListItemTitle>Organización</span>
+                        <span matListItemTitle>Organización:</span>
                         <span matListItemLine>{{ this.validezInicioSesion()?.organizacion }}</span>
                     </mat-list-item>
                     <mat-list-item>
-                        <span matListItemTitle>Proyecto</span>
+                        <span matListItemTitle>Proyecto:</span>
                         <span matListItemLine>{{ this.validezInicioSesion()?.nombre_corto }}</span>
                     </mat-list-item>
                     <mat-list-item>
                         <span matListItemTitle>Plazas</span>
-                        <span matListItemLine>{{tabla.data[0].inscritos}} / {{ this.validezInicioSesion()?.plazas }}</span>
+                        <span matListItemLine>{{tabla.data[0].inscritos}}/{{ this.validezInicioSesion()?.plazas }}</span>
                     </mat-list-item>
-                </mat-list>
+                </mat-list> -->
+                <div class="dato-info">
+                    <span class="titulo-info">Organización:</span>
+                    <span class="valor-info">
+                        {{ this.validezInicioSesion()?.organizacion }}
+                    </span>
+                </div>
+
+                <div class="dato-info">
+                    <span class="titulo-info">Proyecto:</span>
+                    <span class="valor-info">
+                        {{ this.validezInicioSesion()?.nombre_corto }}
+                    </span>
+                </div>
+
+                <div class="dato-info">
+                    <span class="titulo-info">Plazas:</span>
+                    <span class="valor-info">
+                        {{tabla.data[0].inscritos}}/{{ this.validezInicioSesion()?.plazas }}
+                    </span>
+                </div>
+
             </div>
         </mat-card-header>
 
@@ -72,7 +93,7 @@
                 [showFirstLastButtons]="true" (page)="procesaCambioLongitudPagina($event)">
             </mat-paginator>
         </section>
-    }
+        }
     </div>
     }
 
